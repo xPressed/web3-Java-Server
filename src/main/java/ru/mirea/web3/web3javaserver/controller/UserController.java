@@ -18,11 +18,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/user", params = "username")
+    @Transactional
     public User getUser(@RequestParam("username") String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
 
     @GetMapping("/user")
+    @Transactional
     public List<User> getUsers() {
         return userRepository.findAll();
     }

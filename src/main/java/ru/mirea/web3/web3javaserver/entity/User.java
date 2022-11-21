@@ -2,8 +2,7 @@ package ru.mirea.web3.web3javaserver.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,4 +17,7 @@ public class User {
 
     @NonNull
     private String password;
+
+    @Lob
+    private byte[] profilePicture;
 }
