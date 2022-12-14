@@ -37,6 +37,12 @@ public class PostController {
         postRepository.save(new Post(null, userRepository.findById(postDTO.getUserToken()).orElse(null), postDTO.getPicture(), postDTO.getDate(), postDTO.getDescription()));
     }
 
+    @GetMapping("/postDelete/{id}")
+    @Transactional
+    public void deletePost(@PathVariable("id") Integer id) {
+        postRepository.deletePostById(id);
+    }
+
     @GetMapping(value = "/post")
     @Transactional
     public List<PostDTO> getPosts(@RequestParam("token") String token) {
